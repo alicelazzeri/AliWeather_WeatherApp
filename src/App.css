@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap");
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: #fefefe;
   color: #4f4f4f;
@@ -13,7 +15,8 @@ body {
 }
 
 .navTitle,
-#city {
+#city,
+.footerFont {
   font-family: "Tenor Sans", sans-serif;
 }
 
@@ -27,4 +30,47 @@ body {
 
 #forecastList {
   color: #4f4f4f;
+}
+
+.listGroupItem:nth-child(odd) {
+  background-color: #dce4fc3c;
+}
+
+.listGroupItem:nth-child(even) {
+  background-color: #e8e8e86b;
+}
+
+.cardHeader {
+  background-color: #dce4fc3c;
+}
+
+#cardsCol {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.infoCard {
+  height: 150px;
+}
+
+.infoContainer {
+  background-color: #fcd1ff;
+}
+
+.footerBg {
+  background-color: #eacbfe;
+  color: #fefefe;
+}
+
+#navLogo,
+.infoCard {
+  transform: scale(1);
+  transition: box-shadow 0.3s ease-in, transform 0.8s ease-in-out;
+}
+
+#navLogo:hover,
+.infoCard:hover {
+  box-shadow: 0px 0px 34px -4px #000000;
+  cursor: pointer;
+  transform: scale(1.1);
 }

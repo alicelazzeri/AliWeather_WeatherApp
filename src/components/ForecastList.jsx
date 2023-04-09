@@ -33,10 +33,9 @@ const ForecastList = () => {
             {settimana.list.map((day, index) => (
               <ListGroup.Item
                 key={{ index }}
-                className="d-flex justify-content-between align-items-center px-2 px-md-5 py-3"
+                className="listGroupItem d-flex justify-content-between align-items-center ps-1 pe-4 px-md-5 py-3"
               >
                 <div className="d-flex justify-content-between align-items-center">
-                  <img src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="Weather" width={40} />
                   <span className="ps-4 fw-light">
                     {new Date(day.dt * 1000).toLocaleDateString("en-UK", {
                       day: "numeric",
@@ -47,12 +46,14 @@ const ForecastList = () => {
                     })}
                   </span>
                 </div>
-
-                <p className="fw-light mb-0">
-                  <small>
-                    {day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}
-                  </small>
-                </p>
+                <div className="d-flex justify-content-between align-items-center gap-3">
+                  <img src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="Weather" width={40} />
+                  <p className="fw-light mb-0">
+                    <small>
+                      {day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}
+                    </small>
+                  </p>
+                </div>
 
                 <div className="d-flex flex-row">
                   <p className="fw-light mb-0">

@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import MoreInfo from "./MoreInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import HomeButton from "./HomeButton";
 
 const Weather = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const Weather = () => {
       {meteo !== null && (
         <>
           <WeatherCard />
+          <HomeButton />
           <ForecastList />
           <MoreInfo />
         </>
