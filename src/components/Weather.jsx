@@ -1,7 +1,6 @@
 import WeatherCard from "./WeatherCard";
 import ForecastList from "./ForecastList";
 import { Container } from "react-bootstrap";
-import HomeButton from "./Button";
 import MoreInfo from "./MoreInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -18,7 +17,7 @@ const Weather = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        dispatch({ type: "WEEKLY_WEATHER", payload: data });
+        dispatch({ type: "CURRENT_WEATHER", payload: data });
       }
     } catch (error) {
       console.log(error);
@@ -26,11 +25,11 @@ const Weather = () => {
   };
   useEffect(() => {
     request(endpoint);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const meteo = useSelector(state => state.meteo.content);
   return (
     <Container fluid>
-      <HomeButton />
       {meteo !== null && (
         <>
           <WeatherCard />

@@ -22,26 +22,43 @@ const ForecastList = () => {
   };
   useEffect(() => {
     request(endpoint);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container>
       {settimana !== null && (
         <>
-          <ListGroup variant="flush">
+          <ListGroup id="forecastList" variant="flush">
             {settimana.list.map((day, index) => (
-              <ListGroup.Item key={{ index }} className="d-flex justify-content-around align-items-center">
-                <div>
-                  <span className="pe-4 fw-light">{day.dt_txt}</span>
-                  <img src="https://www.pngmart.com/files/3/Weather-PNG-HD.png" alt="Weather" width={40} />
+              <ListGroup.Item
+                key={{ index }}
+                className="d-flex justify-content-between align-items-center px-2 px-md-5 py-3"
+              >
+                <div className="d-flex justify-content-between align-items-center">
+                  <img src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="Weather" width={40} />
+                  <span className="ps-4 fw-light">
+                    {new Date(day.dt * 1000).toLocaleDateString("en-UK", {
+                      day: "numeric",
+                      month: "short",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      timeZone: "Europe/London",
+                    })}
+                  </span>
                 </div>
 
-                <p className="fw-light mb-0">{day.weather.description}</p>
+                <p className="fw-light mb-0">
+                  <small>
+                    {day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}
+                  </small>
+                </p>
 
                 <div className="d-flex flex-row">
                   <p className="fw-light mb-0">
                     {" "}
-                    <span>9°</span> &#8211; <span>20</span>
+                    <span>{parseFloat(day.main.temp_min).toFixed(0)}°</span> &#8211;{" "}
+                    <span>{parseFloat(day.main.temp_max).toFixed(0)}°</span>
                   </p>
                 </div>
               </ListGroup.Item>

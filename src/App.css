@@ -1,3 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap");
+
 body {
-  background-color: rgb(254, 247, 237);
+  background-color: #fefefe;
+  color: #4f4f4f;
+}
+
+#weatherCard {
+  border-radius: 30px;
+  background-color: #dae3ff;
+  box-shadow: 5px 5px 37px -6px #000000;
+  margin-top: 150px;
+}
+
+.navTitle,
+#city {
+  font-family: "Tenor Sans", sans-serif;
+}
+
+#navBar {
+  background-color: #eacbfe;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+#forecastList {
+  color: #4f4f4f;
 }
