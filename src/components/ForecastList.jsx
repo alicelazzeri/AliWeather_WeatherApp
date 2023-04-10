@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 const ForecastList = () => {
   const dispatch = useDispatch();
   const settimana = useSelector(state => state.settimana.content);
-  const longitude = "10.5258221";
-  const latitude = "42.9332727";
-  const endpoint = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&lang=en&units=metric&appid=0fed715bb045ae4b8aceb8e42ee9243a`;
+  const coord = useSelector(state => state.coord.content);
+  const lat = coord[0].lat;
+  const lon = coord[0].lon;
+  const endpoint = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=en&units=metric&appid=0fed715bb045ae4b8aceb8e42ee9243a`;
   const request = async endpoint => {
     try {
       const response = await fetch(endpoint);

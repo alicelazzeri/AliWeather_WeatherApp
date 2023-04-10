@@ -5,6 +5,9 @@ const InitialState = {
   settimana: {
     content: null,
   },
+  coord: {
+    content: [],
+  },
 };
 const mainReducer = (state = InitialState, action) => {
   switch (action.type) {
@@ -24,6 +27,15 @@ const mainReducer = (state = InitialState, action) => {
           content: action.payload,
         },
       };
+    case "SEARCH_LOCATION":
+      return {
+        ...state,
+        coord: {
+          ...state.coord,
+          content: action.payload,
+        },
+      };
+
     default:
       return state;
   }
