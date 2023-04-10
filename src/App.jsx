@@ -5,6 +5,7 @@ import Weather from "./components/Weather";
 import Homepage from "./components/Homepage";
 import MyNav from "./components/MyNav";
 import MyFooter from "./components/MyFooter";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/weather" element={<Weather />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <MyFooter />
       </BrowserRouter>
