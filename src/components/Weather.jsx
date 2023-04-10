@@ -1,12 +1,13 @@
 import WeatherCard from "./WeatherCard";
 import ForecastList from "./ForecastList";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import MoreInfo from "./MoreInfo";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import HomeButton from "./HomeButton";
 
 const Weather = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const coord = useSelector(state => state.coord.content);
   const lat = coord[0].lat;
@@ -18,7 +19,7 @@ const Weather = () => {
       const response = await fetch(endpoint);
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        setIsLoading(false);
         dispatch({ type: "CURRENT_WEATHER", payload: data });
       }
     } catch (error) {
@@ -32,6 +33,15 @@ const Weather = () => {
   const meteo = useSelector(state => state.meteo.content);
   return (
     <Container fluid>
+      <>
+        {isLoading && (
+          <div className="container-fluid d-flex justify-content-center">
+            <Spinner variant="primary" animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        )}
+      </>
       {meteo !== null && (
         <>
           <WeatherCard />
